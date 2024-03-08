@@ -103,7 +103,7 @@ function logIn($conn, $email, $password){
         if ($rows[0][0] > 0){
         return true;
         }
-        else
+            else
         {
             return false;
         }

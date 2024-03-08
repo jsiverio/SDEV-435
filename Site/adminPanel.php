@@ -5,7 +5,6 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 1) {
     die();
 }
 ?>
-
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
   <head>
@@ -396,17 +395,9 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 1) {
     </div>
 
     <!-- Chart.js -->
-    
-    
-    
-
-
-
-
-
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>

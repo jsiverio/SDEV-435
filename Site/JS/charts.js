@@ -7,7 +7,7 @@ const mtdcacc = document.getElementById('mtdCasesByAgencyChart');
 const ytdcacc = document.getElementById('ytdCasesByAgencyChart');
 
 function mdc(arrData){
-new Chart(mdcc, {
+  new Chart(mdcc, {
   type: 'doughnut',
   data: {
     labels: arrData[0],
