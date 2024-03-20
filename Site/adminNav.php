@@ -52,7 +52,7 @@
                     ></path></svg></span
               ></a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#">Database</a></li>
+            <li class="nav-item"><a class="nav-link" href="adminPanelDB.php">Database</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
             <li class="nav-item dropdown ms-4" style="border-style: none">
               <a
