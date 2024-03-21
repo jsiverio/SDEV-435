@@ -19,28 +19,10 @@
 </head>
 
 <body style="background: #fbfbfd;font-family: Inter, sans-serif;">
-    <nav class="navbar navbar-expand-md bg-dark py-3" data-bs-theme="dark" style="position: relative;">
-        <div class="container"><img class="navbar-brand" src="assets/img/Polaris%20logo%20White%20no%20RMS.svg"
-                width="210" height="38"><button data-bs-toggle="collapse" class="navbar-toggler"
-                data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span
-                    class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-5">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Users<span class="badge bg-primary"
-                                style="font-size: 12px;">42</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Database<span
-                                class="badge bg-primary">42</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
-                    <li class="nav-item dropdown ms-4" style="border-style: none;"><a class="nav-link"
-                            aria-expanded="false" data-bs-toggle="dropdown" href="#"
-                            style="font-family: Inter, sans-serif;border-style: none;border-color: var(--bs-navbar-color);color: var(--bs-navbar-brand-color);">Administrator</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Profile</a><a class="dropdown-item"
-                                href="#">Sign out</a></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+     <!-- Navbar -->
+ <?php
+    include 'adminNav.php';
+ ?>
     <div class="container" style="padding-top: 20px;padding-right: 70px;padding-left: 70px;">
         <div class="row g-1">
             <div class="col" style="background: transparent;">
