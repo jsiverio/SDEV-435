@@ -163,3 +163,37 @@ function logIn($conn, $email, $password){
         }
 
     }
+    function getOffences($conn)
+    {
+        $sqlQuery = "SELECT * FROM cases_offense_lu";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $rows = mysqli_fetch_all($result);
+            return $rows;
+        }
+        else {
+            return false;
+        }
+    }
+    function getEvidence($conn)
+    {
+        $sqlQuery = "SELECT * FROM evidence_type_lu";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $rows = mysqli_fetch_all($result);
+            return $rows;
+        }
+        else {
+            return false;
+        }
+    }
