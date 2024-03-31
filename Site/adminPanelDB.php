@@ -196,9 +196,13 @@
 
     <script>
         function addAgencyAjx() {
-            var agency = document.getElementById('agency').value;
+            var agency = document.getElementById('agency')
+            if (agency.value == "" || agency.value == null) {
+                alert("Please enter an agency name");
+                return;
+            }
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "Scripts/FormHandlers/dbEditFormHandler.php?action=add&type=agency&value=" + agency, true);
+            xhr.open("GET", "Scripts/FormHandlers/dbEditFormHandler.php?action=add&type=agency&value=" + agency.value, true);
             xhr.send();
             xhr.onload = function() {
                 if (xhr.status == 200) {
