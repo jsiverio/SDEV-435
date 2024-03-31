@@ -70,7 +70,7 @@
               >
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="adminPasswordChange.php">Change Password</a
-                ><a class="dropdown-item" href="#">Sign out</a>
+                ><a class="dropdown-item" href="Scripts/Misc/logout.php">Sign out</a>
               </div>
             </li>
           </ul>
