@@ -21,7 +21,6 @@
     <!-- Navbar -->
     <?php
     include 'adminNav.php';
-    //require 'Scripts/Include/functions.php';
     ?>
     <div class="container" style="padding-top: 20px;padding-right: 70px;padding-left: 70px;">
         <div class="row g-1">
