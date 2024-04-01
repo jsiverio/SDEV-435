@@ -2,7 +2,6 @@
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require '../Include/DBSetup.php';
-    
 
     $email = trim($_POST['email']);
     $email = strtolower($email);
@@ -17,7 +16,7 @@ else{
         $sqlQuery = "SELECT * FROM users WHERE email = ?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
-            echo "SQL Error";
+            header('Location: ../../index.php?error=SQL%20Error');
         }
         mysqli_stmt_bind_param($stmt, "s", $email);
         mysqli_stmt_execute($stmt);
@@ -48,7 +47,19 @@ else{
                     $_SESSION['email'] = $email;
                     $_SESSION['userType'] = $rows['user_type'];
                     $_SESSION['agency'] = $rows['agency'];
-                    header('Location: ../../adminPanel.php');
+                    
+                    // Route user to proper panel based on user type
+                    switch($_SESSION['userType']){
+                        case 1:
+                            header('Location: ../../adminPanel.php');
+                            break;
+                        case 2:
+                            header('Location: ../../investigatorPanel.php');
+                            break;
+                        case 3:
+                            header('Location: ../../examinerPanel.php');
+                            break;
+                    }    
                 }
                 else{
                     $sqlQuery = "UPDATE users SET wrong_pwd_count = wrong_pwd_count + 1 WHERE email = ?";
