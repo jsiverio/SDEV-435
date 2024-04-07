@@ -54,7 +54,24 @@ function logIn($conn, $email, $password){
     }
         //NEW functions
     
-    
+    function getAuthority($conn)
+    {
+        $sqlQuery = "SELECT * FROM cases_authority_lu";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $rows = mysqli_fetch_all($result);
+            return $rows;
+        }
+        else {
+            return false;
+        }
+    }
+
     function getAgencies($conn)
     {
         $sqlQuery = "SELECT * FROM users_agency_lu";
