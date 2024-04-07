@@ -4,7 +4,6 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
     header('Location: index.php');
     die();
 }
-
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
