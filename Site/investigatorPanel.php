@@ -160,6 +160,18 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
                 echo "<td class='text-left'><a class='link-primary link-opacity-25-hover' href='$link'>" . $row['dr'] . "</a></td>";
                 echo "<td class='text-center'>" . tblValueParse($conn, 'offense', $row['offense'])[0][0] . "</td>";
                 echo "<td class='text-center'>" . $row['creation_date'] . "</td>";
+                if($row['in_progress_date'] == "00-00-0000"){
+                  $row['in_progress_date'] = "----";
+                }
+                else{
+                  $row['in_progress_date'] = $row['in_progress_date'];
+                }
+                if($row['completed_date'] == "00-00-0000"){
+                  $row['completed_date'] = "----";
+                }
+                else{
+                  $row['completed_date'] = $row['completed_date'];
+                }
                 echo "<td class='text-center'>" . $row['in_progress_date'] . "</td>";
                 echo "<td class='text-center'>" . $row['completed_date'] . "</td>";
                 switch ($row['status']) {
