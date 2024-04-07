@@ -92,7 +92,9 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
       </div>
       <form style="padding-top: 32px"
             method="POST"
-            action="Scripts/FormHandlers/newCaseFormHadler.php">
+            action="Scripts/FormHandlers/newCaseFormHadler.php"
+            autocomplete="off"
+            >
         <div
           class="shadow-sm"
           style="
@@ -147,6 +149,7 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
                   type="text"
                   id="swNumber"
                   name="swNumber"
+                  disabled
                 /><small></small>
               </div>
               <div class="col">
@@ -190,13 +193,15 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
           </div>
           <div class="row" id="narrativeBlock" style="height: 276px">
             <div class="col">
-              <input
+              <textarea
                 class="form-control"
                 type="text"
                 id="narrative"
                 style="height: 251.3333px"
                 name="narrative"
-              /><small></small>
+              >
+              </textarea>
+              <small></small>
             </div>
           </div>
         </div>
