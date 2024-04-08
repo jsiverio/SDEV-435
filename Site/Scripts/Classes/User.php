@@ -95,6 +95,21 @@ class User{
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
+    public function updateProfile($conn, $id, $name, $lastname, $badge, $phone, $email){
+        //Standarizing some inputs to follow the DB structure
+        $name = strtolower($name);
+        $lastname = strtolower($lastname);
+        $phone = str_replace(['(',')','-'], '', $phone);
+
+        $sql = "UPDATE users SET name = ?, last_name = ?, badge = ?, phone_number = ?, email = ? WHERE users_id = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "sssssi", $name, $lastname, $badge, $phone, $email, $id);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
     public function unlockUser($conn, $id){
         $sql = "UPDATE users SET user_status = 1 WHERE users_id = ?";
         $stmt = mysqli_stmt_init($conn);

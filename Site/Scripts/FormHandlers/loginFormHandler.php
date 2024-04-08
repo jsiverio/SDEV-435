@@ -45,6 +45,7 @@ else{
                     $_SESSION['lastName'] = $rows['last_name'];
                     $_SESSION['badge'] = $rows['badge'];
                     $_SESSION['email'] = $email;
+                    $_SESSION['phone'] = $rows['phone_number'];
                     $_SESSION['userType'] = $rows['user_type'];
                     $_SESSION['agency'] = $rows['agency'];
                     

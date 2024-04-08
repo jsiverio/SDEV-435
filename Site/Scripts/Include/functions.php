@@ -314,3 +314,76 @@ function logIn($conn, $email, $password){
         }
 
     }
+    function insertNewCase($conn, $dr, $owner, $authority, $swNumber, $offense, $narrative){
+        $sqlQuery = "SELECT insert_new_case(?,?,?,?,?,?)" ;
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "siisis", $dr, $owner, $authority, $swNumber, $offense, $narrative, );
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $rows = mysqli_fetch_all($result);
+        mysqli_stmt_close($stmt);
+        return $rows[0][0];
+    }
+    function insertNewEvidence($conn, $evideceNumber, $deviceType, $evidenceSize, $drId, $evidenceNotes){
+        $sqlQuery = "CALL insert_evidence(?,?,?,?,?)" ;
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "siiis", $evideceNumber, $deviceType, $evidenceSize, $drId, $evidenceNotes);
+        if(mysqli_stmt_execute($stmt)){
+            return true;
+        }
+        else{
+            return false;
+        }
+        mysqli_stmt_close($stmt);
+        
+    }
+    function refreshUser($conn, $id){
+        $sqlQuery = "SELECT * FROM users WHERE users_id = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $rows = mysqli_fetch_assoc($result);
+                    $_SESSION['firstName'] = $rows['name'];
+                    $_SESSION['lastName'] = $rows['last_name'];
+                    $_SESSION['badge'] = $rows['badge'];
+                    $_SESSION['email'] = $rows['email'];
+                    $_SESSION['phone'] = $rows['phone_number'];
+        }
+        else {
+            return false;
+        }
+    }
+    function getNarrative($conn, $id){
+        $sqlQuery = "SELECT narrative FROM cases WHERE cases_id = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $rows = mysqli_fetch_all($result);
+            return $rows[0][0];
+        }
+        else {
+            return false;
+        }
+    }
+    function getEvidenceCount($conn, $case_id){
+        $sql = "SELECT COUNT(*) FROM evidence WHERE associated_case=$case_id";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        return $row['COUNT(*)'];
+    }

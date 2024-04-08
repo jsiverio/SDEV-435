@@ -133,17 +133,22 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
                   type="text"
                   id="dr"
                   name="dr"
+                  value ="<?php echo $_GET['dr']; ?>"
                 /><small></small>
               </div>
               <div class="col">
                 <label class="form-label" for="authority">Authority</label
                 ><select class="form-select" id="authority" name="authority">
-                    <option value="0" selected=""></option>
+                    
                     <?php
                       $results = getAuthority($conn);
                       foreach ($results as $result) {
+                        if($result[0] == $_GET['authority']){
+                          echo '<option value="'.$result[0].'" selected>'.$result[1].'</option>';
+                        }else{
                         echo '<option value="'.$result[0].'">'.$result[1].'</option>';
                       }
+                    }
                     ?>
                     
                   </optgroup></select
@@ -156,17 +161,22 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
                   type="text"
                   id="swNumber"
                   name="swNumber"
+                  value ="<?php echo $_GET['sw']; ?>"
                   disabled
                 /><small></small>
               </div>
               <div class="col">
                 <label class="form-label" for="offense">Offense</label
                 ><select class="form-select" id="offense" name="offense">
-                <option value="0" selected=""></option>
                     <?php
                       $results = getOffences($conn);
                       foreach ($results as $result) {
-                        echo '<option value="'.$result[0].'">'.$result[1].'</option>';
+                        if($result[0] == $_GET['offense']){
+                          echo '<option value="'.$result[0].'" selected>'.$result[1].'</option>';
+                        }
+                        else{
+                          echo '<option value="'.$result[0].'">'.$result[1].'</option>';
+                        }
                       }
                     ?>
                   </optgroup></select
@@ -207,7 +217,7 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
                 type="text"
                 rows = "10"
                 spellcheck="true"
-              ></textarea>
+              ><?php echo getNarrative($conn, $_GET['id']) ?></textarea>
               <small></small>
             </div>
           </div>
@@ -313,13 +323,20 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
           </div>
         </div>
         </div>
+        <?php
+          //Need to implement logic to populate the evidence blocks with the correct data
+          $evidenceCount = getEvidenceCount($conn, $_GET['id']);
+          for($i = 1 ; $i < $evidenceCount; $i++){
+            echo  '<script src="JS/CaseBlock.js"></script>
+                    <script src="JS/newCase.js" ></script>';
+            echo '<script>addEvidenceBlock()</script>';
+          }
+        ?>
         <div class="text-center" style="padding-top: 32px">
           <input id="submit" class="btn btn-primary" type="submit" style="width: 200px" />
         </div>
       </form>
     </div>
-    <script src="JS/CaseBlock.js"></script>
-    <script src="JS/newCase.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
