@@ -94,12 +94,12 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
       "
     >
       <div style="text-align: center">
-        <h4>New Case</h4>
+        <h4>Edit Case</h4>
       </div>
       <form style="padding-top: 32px"
             id="newCaseForm"
             method="POST"
-            action="Scripts/FormHandlers/newCaseFormHadler.php"
+            action="Scripts/FormHandlers/editCaseFormHadler.php"
             autocomplete="off"
             >
         <div
@@ -127,6 +127,13 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
           <div>
             <div class="row" id="caseDetailsBlock" style="height: 94px">
               <div class="col">
+                <input
+                  class="form-control"
+                  type="hidden"
+                  id="caseId"
+                  name="caseId"
+                  value ="<?php echo $_GET['id']; ?>"
+                  >
                 <label class="form-label" for="dr">DR</label
                 ><input
                   class="form-control"
@@ -162,7 +169,6 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
                   id="swNumber"
                   name="swNumber"
                   value ="<?php echo $_GET['sw']; ?>"
-                  disabled
                 /><small></small>
               </div>
               <div class="col">
@@ -289,7 +295,14 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
                 type="text"
                 id="evidenceNotes1"
                 name="evidenceNotes[]"
-              /><small></small>
+              />
+              <input
+                class="form-control"
+                type="hidden"
+                id="evidenceId1"
+                name="evidenceId[]"
+              />
+              <small></small>
             </div>
             <div class="col-2 align-self-center">
               <button class="btn btn-danger" type="button" onclick="clearInputs(this)">Clear</button
@@ -324,19 +337,49 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
         </div>
         </div>
         <?php
-          //Need to implement logic to populate the evidence blocks with the correct data
+         echo  '<script src="JS/CaseBlock.js"></script>
+                <script src="JS/newCase.js" ></script>';
           $evidenceCount = getEvidenceCount($conn, $_GET['id']);
-          for($i = 1 ; $i < $evidenceCount; $i++){
-            echo  '<script src="JS/CaseBlock.js"></script>
-                    <script src="JS/newCase.js" ></script>';
-            echo '<script>addEvidenceBlock()</script>';
+          $evidence = getEvidenceRecord($conn, $_GET['id']);
+          if ($evidenceCount == 1){
+            echo '<script>populateEvidenceBlocks(0,"'.$evidence[0]['evidence_number'].'","'.$evidence[0]['evidence_type'].'","'.$evidence[0]['storage_size'].'","'.$evidence[0]['notes'].'","'.$evidence[0]['evidence_id'].'" )</script>';
           }
+          else{
+            for($i = 1 ; $i < $evidenceCount; $i++){
+            echo '<script>addEvidenceBlock()</script>';
+            }
+            for($i = 0 ; $i < $evidenceCount; $i++){
+              echo '<script>populateEvidenceBlocks('.$i.',"'.$evidence[$i]['evidence_number'].'","'.$evidence[$i]['evidence_type'].'","'.$evidence[$i]['storage_size'].'","'.$evidence[$i]['notes'].'","'.$evidence[$i]['evidence_id'].'" )</script>';
+          }
+        }
+            
         ?>
         <div class="text-center" style="padding-top: 32px">
           <input id="submit" class="btn btn-primary" type="submit" style="width: 200px" />
+          <button id ="deleteCaseBtn" class="btn btn-danger" type="button" style="width: 200px">Delete Case</button>
         </div>
       </form>
     </div>
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('#deleteCaseBtn').click(function(){
+                var id = $('#caseId').val();
+                var confirmation = confirm("Are you sure you want to delete this case?");
+                if(confirmation){
+                    window.location.href = "Scripts/FormHandlers/deleteCaseFormHandler.php?id="+id;
+                }
+            });
+          });
+    </script>
+
+
+
+
+
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>

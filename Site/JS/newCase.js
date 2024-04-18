@@ -27,6 +27,7 @@ function checkInputs() {
     let valid = true;
     inputs.forEach(input => {
         if(input.id === 'submit') return;
+        if (input.type === 'hidden') return;
         if(input.value === '' || input.value === null){
             setErrorFor(input, `Field cannot be blank`);
             valid = false;
@@ -59,8 +60,6 @@ function checkInputs() {
         return false;
 }
 }
-
-
 
 function setErrorFor(input, message) {
     const formControl = input.parentElement; 
@@ -115,5 +114,16 @@ function clearInputs(element){
     inputs.forEach(input => input.value = '');
 }
 
+
+function populateEvidenceBlocks(evidenceBlockid, evidenceNumber, evidenceType, evidenceSize, notes, evidenceId){
+    const evidenceBlocks = evidenceDiv.children;
+    
+    evidenceBlocks[evidenceBlockid].children[0].children[0].childNodes[2].value = evidenceNumber;
+    evidenceBlocks[evidenceBlockid].children[0].children[1].childNodes[2].value = evidenceType;
+    evidenceBlocks[evidenceBlockid].children[0].children[2].childNodes[2].value = evidenceSize;
+    evidenceBlocks[evidenceBlockid].children[0].children[3].childNodes[2].value = notes;
+    evidenceBlocks[evidenceBlockid].children[0].children[3].childNodes[4].value = evidenceId;
+    
+    }
 
 

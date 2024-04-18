@@ -57,7 +57,7 @@ session_start();
         </div>
         <div class="col">
           <label class="form-label">Role</label>
-          <input class="form-control" type="text" readonly value ="<?php echo getUserType($conn, $_SESSION['userType']);?>">
+          <input class="form-control" disabled type="text" readonly value ="<?php echo getUserType($conn, $_SESSION['userType']);?>">
           <small></small>
         </div>
       </div>
@@ -75,7 +75,7 @@ session_start();
         </div>
         <div class="col" style="height: 94px">
           <label class="form-label">Agency</label>
-          <input class="form-control" type="text" readonly value ="<?php echo getUserAgency($conn, $_SESSION['agency']);?>">
+          <input class="form-control" disabled type="text" readonly value ="<?php echo getUserAgency($conn, $_SESSION['agency']);?>">
         </div>
       </div>
       <div class="row" style="margin-top: 40px">

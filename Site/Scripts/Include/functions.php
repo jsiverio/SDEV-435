@@ -387,3 +387,56 @@ function logIn($conn, $email, $password){
         $row = $result->fetch_assoc();
         return $row['COUNT(*)'];
     }
+    function getEvidenceRecord($conn, $case_id){
+        $sql = "SELECT * FROM evidence WHERE associated_case=$case_id";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)){
+            return "SQL Error";
+        } else {
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            $evidence = array();
+            while ($row = mysqli_fetch_assoc($result)){
+                $evidence[] = $row;
+            }
+            return $evidence;
+        }
+    }
+    function updateCase($conn, $id, $dr, $authority, $swNumber, $offense, $narrative) {
+        $sql = "UPDATE cases SET dr = ?, authority = ?, sw_number = ?, offense = ?, narrative = ? WHERE cases_id = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            return false;
+        }
+        else {
+            mysqli_stmt_bind_param($stmt, "sisisi", $dr, $authority, $swNumber, $offense, $narrative, $id);
+            mysqli_stmt_execute($stmt);
+            return true;
+            
+        }
+    }
+    function updateEvidence($conn, $id, $evidenceNumber, $deviceType, $evidenceSize, $evidenceNotes) {
+        $sql = "UPDATE evidence SET evidence_number = ?, evidence_type = ?, storage_size = ?, notes = ? WHERE evidence_id = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            return false;   
+        }
+        else {
+            mysqli_stmt_bind_param($stmt, "siisi", $evidenceNumber, $deviceType, $evidenceSize, $evidenceNotes, $id);
+            mysqli_stmt_execute($stmt);
+            return true;
+        }
+    
+    }
+    function deleteCase($conn, $id) {
+        $sql = "CALL delete_Case(?)";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            return false;
+        }
+        else {
+            mysqli_stmt_bind_param($stmt, "i", $id);
+            mysqli_stmt_execute($stmt);
+            return true;
+        }
+    }

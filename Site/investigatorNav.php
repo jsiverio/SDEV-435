@@ -33,8 +33,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navcol-5">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="investigatorAllCases.php" style="position: relative">All Cases</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="investigatorNewCase.php">New Case</a>
