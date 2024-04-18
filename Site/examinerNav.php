@@ -15,7 +15,7 @@
       style="position: relative"
     >
       <div class="container">
-      <a href="investigatorPanel.php">  
+      <a href="examinerPanel.php">  
       <img
           class="navbar-brand"
           src="assets/img/Polaris%20logo%20White%20no%20RMS.svg"

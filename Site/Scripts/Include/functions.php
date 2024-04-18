@@ -583,6 +583,34 @@ function logIn($conn, $email, $password){
         }
         mysqli_stmt_close($stmt);
     }
+    function setCaseInProgress($conn, $id){
+        $sql = "UPDATE cases SET in_progress_date = NOW(), status = 2 WHERE cases_id = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            return false;
+            exit();
+        }
+        else{
+            mysqli_stmt_bind_param($stmt, "i", $id);
+            mysqli_stmt_execute($stmt);
+            return true;   
+            exit();
+        }
+    }
+    function setCaseCompleted($conn, $id){
+        $sql = "UPDATE cases SET completed_date = NOW(), status = 3 WHERE cases_id = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            return false;
+            exit();
+        }
+        else{
+            mysqli_stmt_bind_param($stmt, "i", $id);
+            mysqli_stmt_execute($stmt);
+            return true;   
+            exit();
+        }
+    }   
 
 
 

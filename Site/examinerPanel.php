@@ -154,7 +154,7 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 3) {
             else{
               foreach ($result as $row) {
                 echo "<tr>";
-                $link = "investigatorCase.php?id=" . $row['cases_id'] . "&dr=" . $row['dr'] . "&examiner=" . $row['examiner'] . "&authority=" . $row['authority'] . "&sw=" . $row['sw_number'] . "&offense=" . $row['offense'] . "&creation_date=" . $row['creation_date'] . "&in_progress_date=" . $row['in_progress_date'] . "&completed_date=" . $row['completed_date'] . "&status=" . $row['status'] ;
+                $link = "examinerCase.php?id=" . $row['cases_id'] . "&dr=" . $row['dr'] . "&examiner=" . $row['examiner'] . "&authority=" . $row['authority'] . "&sw=" . $row['sw_number'] . "&offense=" . $row['offense'] . "&creation_date=" . $row['creation_date'] . "&in_progress_date=" . $row['in_progress_date'] . "&completed_date=" . $row['completed_date'] . "&status=" . $row['status'] ;
                 echo "<td class='text-center' hidden>" . $row['cases_id'] . "</td>";
                 echo "<td class='text-left'><a class='link-primary link-opacity-25-hover' href='$link'>" . $row['dr'] . "</a></td>";
                 echo "<td class='text-center'>" . tblValueParse($conn, 'offense', $row['offense'])[0][0] . "</td>";
