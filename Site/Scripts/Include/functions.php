@@ -291,6 +291,9 @@ function logIn($conn, $email, $password){
             case 'examiner':
                 $sqlQuery = "SELECT name, last_name FROM users WHERE users_id = ?";
                 break;
+            case 'investigator':
+                $sqlQuery = "SELECT name, last_name FROM users WHERE users_id = ?";
+                break;    
             case 'offense':
                 $sqlQuery = "SELECT offense FROM cases_offense_lu WHERE cases_offense_id = ?";
                 break;
@@ -440,3 +443,146 @@ function logIn($conn, $email, $password){
             return true;
         }
     }
+    function getExaminerAssignedCasesCount($conn, $id){
+        $sqlQuery = "CALL get_examiner_cases_count(?)";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $rows = mysqli_fetch_all($result);
+            return $rows[0][0];
+        }
+        else {
+            return false;
+        }
+    }
+    function getExaminersInProgressCasesCount($conn, $id){
+        $sqlQuery = "CALL get_examiner_inProgress_cases_count(?)";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $rows = mysqli_fetch_all($result);
+            return $rows[0][0];
+        }
+        else {
+            return false;
+    }
+    }
+    function getExaminerCompletedCasesCount($conn, $id)
+    {
+        $sqlQuery = "CALL get_examiner_completed_cases_count(?)";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $rows = mysqli_fetch_all($result);
+            return $rows[0][0];
+        }
+        else {
+            return false;
+        }
+    }
+    function getExaminerAssignedCases($conn, $id)
+    {
+        $sqlQuery = "CALL get_examiner_cases(?)";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            return $rows;
+        }
+        else {
+            return false;
+        }
+    }
+    function getAllAssignedCasesCount($conn){
+        $sqlQuery = "SELECT COUNT(*) FROM cases WHERE status = 4";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $rows = mysqli_fetch_all($result);
+        return $rows[0][0];
+    }
+    function getAllInProgressCasesCount($conn){
+        $sqlQuery = "SELECT COUNT(*) FROM cases WHERE status = 2";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $rows = mysqli_fetch_all($result);
+        return $rows[0][0];
+    }
+    function getAllCompletedCasesCount($conn){
+        $sqlQuery = "SELECT COUNT(*) FROM cases WHERE status = 3";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $rows = mysqli_fetch_all($result);
+        return $rows[0][0];
+    }
+    function getAllCases($conn){
+        $sqlQuery = "CALL get_all_cases()";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $rows;
+    }
+    function getExaminers($conn){
+        $sqlQuery = "SELECT users_id, name, last_name FROM users WHERE user_type = 3";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $rows;
+    }
+    function assignCase($conn, $case_id, $examiner_id){
+        $sqlQuery = "UPDATE cases SET examiner = ?, status = 4 WHERE cases_id = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
+            echo "SQL Error";
+        }
+        mysqli_stmt_bind_param($stmt, "ii", $examiner_id, $case_id);
+        if(mysqli_stmt_execute($stmt)){
+            return true;
+        }
+        else{
+            return false;
+        }
+        mysqli_stmt_close($stmt);
+    }
+
+
+
