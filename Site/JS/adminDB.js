@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: adminDB.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for admin database edit page
+---------------------------------------------------------------------------------------------------------------------*/
+
 const agencyEditInput = document.getElementById('agencyEdit')
 const agencyEditSelection = document.getElementById('agencyEditSelection')
 
@@ -17,6 +23,4 @@ const evidenceEditSelection = document.getElementById('evidenceEditSelection')
 
 evidenceEditSelection.addEventListener('change', () => {
     evidenceEditInput.value = evidenceEditSelection[evidenceEditSelection.selectedIndex].text
-    });
-
-    
+    });   

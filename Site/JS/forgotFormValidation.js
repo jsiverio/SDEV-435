@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: forgotFormValidation.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for forgot password page
+---------------------------------------------------------------------------------------------------------------------*/
+
 const form = document.getElementById('forgotForm');
 const email = document.getElementById('email');
 
@@ -33,8 +39,6 @@ function setErrorFor(input, message) {
   
 }
 
-
 function isEmail(email) {
   return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
 }
-

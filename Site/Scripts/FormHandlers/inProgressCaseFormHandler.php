@@ -1,4 +1,10 @@
-<?php 
+<?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: inProgressCaseFormHandler.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for setting a case as in progress.
+---------------------------------------------------------------------------------------------------------------------*/ 
+
 session_start();
 if (!isset($_SESSION['users_id'])) {
     header("Location: ../index.php");
@@ -17,7 +23,3 @@ else{
     setCaseInProgress($conn,$caseID);
     header("Location: ../../examinerPanel.php");
 }
-
-
-
-

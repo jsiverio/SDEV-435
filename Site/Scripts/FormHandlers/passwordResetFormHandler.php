@@ -1,4 +1,9 @@
 <?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: passwordResetFormHandler.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for handling the password reset form functionality.
+---------------------------------------------------------------------------------------------------------------------*/
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -8,7 +13,6 @@ $token = trim($_POST['token']);
 $userId = trim($_POST['uid']);
 
 resetPassword($password, $token, $userId);
-
 }
 else { 
     header('Location: ../../index.php');
@@ -80,34 +84,3 @@ function tokenIsVerified($token, $uid){
         }
     }
 }
-
-//Server side validation
-/*function serverSideValidation(){
-    if (empty($password) || empty($password2)) {
-        header("Location: ../../reset.php?error=Please fill in all fields");
-    exit();
-    } else if ($password !== $password2) {
-        header("Location: ../../reset.php?error=Passwords do not match");
-    exit();
-    } else if (strlen($password) < 8) {
-        header("Location: ../../reset.php?error=Password must be at least 8 characters long");
-    exit();
-    } else if (!preg_match('/[A-Z]/', $password)) {
-        header("Location: ../../reset.php?error=Password must contain at least one uppercase letter");
-        exit();
-    } else if (!preg_match('/[a-z]/', $password)) {
-        header("Location: ../../reset.php?error=Password must contain at least one lowercase letter");
-        exit();
-    } else if (!preg_match('/[0-9]/', $password) && !preg_match('/[^A-Za-z0-9]/', $password)) {
-        header("Location: ../../reset.php?error=Password must contain at least one special character or number");
-        exit();
-    }
-}*/
-
-
-
-
-
-
-
-

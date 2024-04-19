@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: loginFormValidation.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for login page
+---------------------------------------------------------------------------------------------------------------------*/
+
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const form = document.getElementById('loginForm');

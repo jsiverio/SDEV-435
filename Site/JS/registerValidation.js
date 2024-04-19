@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: registerValidation.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for register page
+---------------------------------------------------------------------------------------------------------------------*/
+
 const name = document.getElementById('firstname');
 const lastname = document.getElementById('lastname');
 const badge = document.getElementById('badge');

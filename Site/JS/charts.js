@@ -1,3 +1,8 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: charts.js
+Written by: Jorge Siverio 2024
+Description: Chart.js for the dashboard page
+---------------------------------------------------------------------------------------------------------------------*/
 
 const mdcc = document.getElementById('mtdDeviceChart');
 const mccc = document.getElementById('mtdCasesChart');

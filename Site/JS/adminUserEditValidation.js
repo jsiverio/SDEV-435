@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: adminUserEditValidation.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for admin user edit page
+---------------------------------------------------------------------------------------------------------------------*/
+
 const form = document.getElementById('userEditForm');
 const inputs = form.querySelectorAll('input');
 const role = document.getElementById('role');
@@ -104,11 +110,3 @@ select.forEach(input => {
     }
     )
 });
-
-
-
-
-
-
-
-

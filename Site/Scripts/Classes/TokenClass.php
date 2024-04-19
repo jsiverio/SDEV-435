@@ -1,9 +1,10 @@
 <?php
-// Author: Jorge Siverio
-// 2024
-// POLARIS RMS
-// Token Class
-// The class is used to generate a token and store it in the database. The token is used to reset the user's password.
+/*---------------------------------------------------------------------------------------------------------------------
+File: TokenClass.php
+Written by: Jorge Siverio 2024
+Description: The class is used to generate a token and store it in the database. The token is used to reset the user's 
+password.
+---------------------------------------------------------------------------------------------------------------------*/
 
 class Token {
     
@@ -20,6 +21,7 @@ class Token {
     }
 
     //Methods
+
     //Method to add the token to the database and returns true if successful.
     public function addTokenToDB($userID) {
         require '../Include/DBSetup.php';
@@ -50,5 +52,3 @@ class Token {
     }
     
 }
-
-

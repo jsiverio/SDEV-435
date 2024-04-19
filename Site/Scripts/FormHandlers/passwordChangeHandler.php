@@ -1,5 +1,10 @@
 <?php
 session_start();
+/*---------------------------------------------------------------------------------------------------------------------
+File: passwordChangeHandler.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for handling the user password change functionality.
+---------------------------------------------------------------------------------------------------------------------*/
 require '../Include/DBSetup.php';
 
 $oldPassword = $_POST['oldPassword'];
@@ -55,10 +60,3 @@ else {
     header("Location: ../../adminPasswordChange.php?error=Incorrect password");
     exit();
 }
-
-
-
-
-
-
-

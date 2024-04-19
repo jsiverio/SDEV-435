@@ -1,11 +1,9 @@
 <?php
-// function encrytpPassword($password) {
-//     $hash = password_hash($password, PASSWORD_DEFAULT);
-//     return $hash;
-// }
-// function verifyPassword($password, $hash) {
-//     return password_verify($password, $hash);
-// }
+/*---------------------------------------------------------------------------------------------------------------------
+File:functions.php
+Written by: Jorge Siverio 2024
+Misc funtion used to fetch data from the database.
+---------------------------------------------------------------------------------------------------------------------*/
 
 function checkIfEmailExist($conn,$emailAddressToCheck)
 {
@@ -52,8 +50,6 @@ function logIn($conn, $email, $password){
 
 
     }
-        //NEW functions
-    
     function getAuthority($conn)
     {
         $sqlQuery = "SELECT * FROM cases_authority_lu";
@@ -611,6 +607,3 @@ function logIn($conn, $email, $password){
             exit();
         }
     }   
-
-
-

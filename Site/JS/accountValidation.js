@@ -1,8 +1,12 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: accountValidation.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for user account edit page
+---------------------------------------------------------------------------------------------------------------------*/
+
 const form = document.getElementById('userEditForm');
 const inputs = form.querySelectorAll('input');
 const submit = document.getElementById('submit');
-
-
 
 function checkInputs() { 
     inputs.forEach(input => {
@@ -94,11 +98,3 @@ select.forEach(input => {
     }
     )
 });
-
-
-
-
-
-
-
-

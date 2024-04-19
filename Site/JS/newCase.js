@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: newCase.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for new case and dynamic evidence block creation
+---------------------------------------------------------------------------------------------------------------------*/
+
 const masterEvidenceBlock = document.getElementById('evidenceBlock1');
 const evidenceDiv = document.getElementById('evidence');
 const authority = document.getElementById('authority');
@@ -114,7 +120,6 @@ function clearInputs(element){
     inputs.forEach(input => input.value = '');
 }
 
-
 function populateEvidenceBlocks(evidenceBlockid, evidenceNumber, evidenceType, evidenceSize, notes, evidenceId){
     const evidenceBlocks = evidenceDiv.children;
     
@@ -125,5 +130,3 @@ function populateEvidenceBlocks(evidenceBlockid, evidenceNumber, evidenceType, e
     evidenceBlocks[evidenceBlockid].children[0].children[3].childNodes[4].value = evidenceId;
     
     }
-
-

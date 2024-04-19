@@ -52,7 +52,7 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 3) {
       "
       >
       <div>
-        <h5 style="font-weight: bold">DASHBOARD</h5>
+        <h5 style="font-weight: bold">EXAMINER DASHBOARD</h5>
       </div>
       <div class="row" style="margin-top: 40px">
         <div

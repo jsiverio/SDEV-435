@@ -1,4 +1,9 @@
 <?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: registerFormHandler.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for handling the registration form functionality.
+---------------------------------------------------------------------------------------------------------------------*/
 //DB connection
 require '../Include/DBSetup.php';
 

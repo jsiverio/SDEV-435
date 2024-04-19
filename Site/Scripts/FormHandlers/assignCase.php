@@ -1,4 +1,10 @@
 <?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: assignCase.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for assigning a case to an examiner.
+---------------------------------------------------------------------------------------------------------------------*/
+
 session_start();
 if (!isset($_SESSION['users_id'])){
     header('Location: index.php');

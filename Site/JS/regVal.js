@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: regVal.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for registration page
+---------------------------------------------------------------------------------------------------------------------*/
+
 const form = document.getElementById('registerForm');
 const inputs = form.querySelectorAll('.form-control');
 let phoneNumberRegex = /^\d{10}$/;

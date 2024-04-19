@@ -1,4 +1,9 @@
 <?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: loginFormHandler.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for handling the login form functionality.
+---------------------------------------------------------------------------------------------------------------------*/
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require '../Include/DBSetup.php';
@@ -75,25 +80,3 @@ else{
                 }
             }
         }
-     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    

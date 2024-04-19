@@ -1,5 +1,9 @@
 <?php
-
+/*---------------------------------------------------------------------------------------------------------------------
+File: User.php
+Written by: Jorge Siverio 2024
+Description: This class is responsible for handling the user object.
+---------------------------------------------------------------------------------------------------------------------*/
 class User{
 
     //Properties
@@ -143,11 +147,5 @@ class User{
         echo "Role: " . $this->role . "<br>";
         echo "Status: " . $this->status . "<br>";
         echo "Agency: " . $this->agency . "<br>";
-    }
-    
-
-
-    
-    
-    
+    } 
 }

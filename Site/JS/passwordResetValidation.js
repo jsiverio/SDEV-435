@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: passwordResetValidation.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for password reset page
+---------------------------------------------------------------------------------------------------------------------*/
+
 const form = document.getElementById('passwordResetForm');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');

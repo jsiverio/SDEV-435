@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: passwordChangeValidation.js
+Written by: Jorge Siverio 2024
+Description: Form Validation for password change page
+---------------------------------------------------------------------------------------------------------------------*/
+
 const form = document.getElementById('passwordChangeForm')
 const oldPassword = document.getElementById('oldPassword')
 const newPassword = document.getElementById('newPassword')
@@ -132,7 +138,3 @@ function setSuccessFor(input) {
     }
     input.classList.add('is-valid');
 }
-    
-
-
-        

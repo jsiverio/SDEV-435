@@ -1,4 +1,9 @@
 <?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: editCaseFormHandler.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for handling the case edit form functionality.
+---------------------------------------------------------------------------------------------------------------------*/
 session_start();
 require '../Include/DBSetup.php';
 require '../Include/functions.php';

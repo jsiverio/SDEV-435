@@ -1,4 +1,10 @@
 <?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: logout.php
+Written by: Jorge Siverio 2024
+Function used to log the user out of the system by destroying the session and redirecting the user to the login page.
+---------------------------------------------------------------------------------------------------------------------*/
+
 session_start();
 // Unset all of the session variables.
 $_SESSION = array();

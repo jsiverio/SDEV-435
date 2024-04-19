@@ -1,4 +1,9 @@
 <?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: deleteCaseFormHandler.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for deleting a case from the database.
+---------------------------------------------------------------------------------------------------------------------*/
  session_start();
 require '../Include/DBSetup.php';
 require '../Include/functions.php';

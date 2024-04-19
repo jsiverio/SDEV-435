@@ -1,4 +1,9 @@
 <?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: dbEditFormHandler.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for handling the admin panel database edit form functionality.
+---------------------------------------------------------------------------------------------------------------------*/
 require '../Include/DBSetup.php';
 
 //Add feature
@@ -220,7 +225,5 @@ function backupDB($conn): void
     }else{
         echo "File download failed";
     } 
-    
-    
     
 }

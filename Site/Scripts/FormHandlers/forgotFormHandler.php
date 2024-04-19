@@ -1,4 +1,10 @@
 <?php
+/*---------------------------------------------------------------------------------------------------------------------
+File: forgotFormHandler.php
+Written by: Jorge Siverio 2024
+Description: This script is responsible for handling the forgot password form functionality.
+---------------------------------------------------------------------------------------------------------------------*/
+
 if(!isset($_POST['email'])){
     header("Location: ../../forgot.php");
     exit();
@@ -38,6 +44,3 @@ else{
         header("Location: ../../forgot_.php");
     }
 }
-        
-
-

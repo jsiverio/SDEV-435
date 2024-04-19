@@ -1,5 +1,9 @@
 <?php
-
+/*---------------------------------------------------------------------------------------------------------------------
+File: ChartData.php
+Written by: Jorge Siverio 2024
+Description: This class is responsible for handling the admin chart data.
+---------------------------------------------------------------------------------------------------------------------*/
 
 class ChartData{
     
@@ -141,4 +145,3 @@ class ChartData{
     }
 
 }
-

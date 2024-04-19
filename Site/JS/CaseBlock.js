@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------------------------------
+File: CaseBlock.js
+Written by: Jorge Siverio 2024
+Description: CaseBlock class for creating new evidence blocks
+---------------------------------------------------------------------------------------------------------------------*/
+
 //Declaration
 class CaseBlock {
     constructor(block, id) {
@@ -24,7 +30,4 @@ class CaseBlock {
        
        return newBlock;
     }
-    
-
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 1) {
     header('Location: index.php');
@@ -8,7 +9,6 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 1) {
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
   <head>
-  
     <meta charset="utf-8" />
     <meta
       name="viewport"

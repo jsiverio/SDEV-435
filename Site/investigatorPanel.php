@@ -52,7 +52,7 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
       "
       >
       <div>
-        <h5 style="font-weight: bold">DASHBOARD</h5>
+        <h5 style="font-weight: bold">INVESTIGATOR DASHBOARD</h5>
       </div>
       <div class="row" style="margin-top: 40px">
         <div
@@ -175,7 +175,7 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
                 echo "<td class='text-center'>" . $row['completed_date'] . "</td>";
                 switch ($row['status']) {
                     case 1:
-                        echo "<td class='text-center'><span class='badge rounded-pill bg-primary text-center'>Submited</span></td>";
+                        echo "<td class='text-center'><span class='badge rounded-pill bg-secondary text-center'>Submited</span></td>";
                         break;
                     case 2:
                         echo "<td class='text-center'><span class='badge rounded-pill bg-warning text-center'>In Progress</span></td>";
@@ -183,6 +183,11 @@ if (!isset($_SESSION['users_id']) || $_SESSION['userType'] != 2) {
                     case 3:
                         echo "<td class='text-center'><span class='badge rounded-pill bg-success text-center'>Completed</span></td>";
                         break;
+                    case 4:
+                        echo "<td class='text-center'><span class='badge rounded-pill bg-primary text-center'>Assigned</span></td>";
+                        break;
+                      
+                        
                 }
                 if(!tblValueParse($conn, 'examiner', $row['examiner'])){
                   $examiner = "Not Assigned";

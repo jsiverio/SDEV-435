@@ -1,10 +1,12 @@
 <?php
-/**
- * This script is responsible for handling pagination functionality.
- * It retrieves the total number of rows from the 'users' table,
- * calculates the number of pages based on the rows per page,
- * and provides a function to fetch a subset of users based on the start and rows per page values.
- */
+/*---------------------------------------------------------------------------------------------------------------------
+File: pagination.php
+Written by: Jorge Siverio 2024
+This script is responsible for handling pagination functionality.
+It retrieves the total number of rows from the 'users' table,
+calculates the number of pages based on the rows per page,
+and provides a function to fetch a subset of users based on the start and rows per page values.
+---------------------------------------------------------------------------------------------------------------------*/
 
 $start = 0;
 $rowsPerPage = 3;
@@ -58,5 +60,3 @@ function getUsers($start, $rowsPerPage, $id)
     }
 }
 ?>
-
- 
